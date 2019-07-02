@@ -1,14 +1,15 @@
 package com.example.mjcstagram;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    @Override
+
+     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_main);
+     }
 }

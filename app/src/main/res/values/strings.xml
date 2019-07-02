@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MjcStagram</string>
+    <string name="Mjcstargram">Mjcstagram</string>
+    <string name="OR">OR</string>
+    <string name="footer">Google 계정과 Facebook 계정으로만 이용가능합니다.</string>
+    <string name="loading">loading\.\.\.</string>
+    <string name="facebook_app_id">341996433159456</string>
+    <string name="facebook_fb_login_protocol_scheme">fb341996433159456</string>
 </resources>

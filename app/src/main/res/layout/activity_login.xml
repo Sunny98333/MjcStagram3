@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light"
+    tools:context=".MainActivity">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Mjcstargram"
+            android:textSize="30sp"
+            android:fontFamily="@font/doodletoon_line"
+            app:layout_constraintVertical_bias="0.3"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            />
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/Google_Login"
+            android:layout_width="310dp"
+            android:layout_height="50dp"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            tools:ignore="MissingConstraints"
+            >
+        </com.google.android.gms.common.SignInButton>
+
+
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="2dp"
+            android:background="@drawable/solid"
+            android:gravity="center"
+            android:textSize="12sp"
+            app:layout_constraintTop_toTopOf="@id/or"
+            app:layout_constraintBottom_toBottomOf="@id/or"
+            app:layout_constraintRight_toLeftOf="@id/or"
+            android:layout_marginEnd="30dp"
+            />
+
+        <TextView
+            android:id="@+id/or"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/OR"
+            android:fontFamily="@font/doodletoon_line"
+            app:layout_constraintVertical_bias="0.58"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            />
+
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="2dp"
+            android:background="@drawable/solid"
+            android:gravity="center"
+            android:textSize="12sp"
+
+            app:layout_constraintTop_toTopOf="@id/or"
+            app:layout_constraintBottom_toBottomOf="@id/or"
+            app:layout_constraintLeft_toRightOf="@id/or"
+            android:layout_marginStart="30dp"
+            />
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/login_button"
+            android:layout_width="310dp"
+            android:layout_height="50dp"
+            app:layout_constraintVertical_bias="0.66"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/footer"
+            android:background="@drawable/solid"
+            android:gravity="center"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
