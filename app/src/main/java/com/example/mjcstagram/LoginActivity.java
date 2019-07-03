@@ -121,6 +121,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                         }else{
                             Toast.makeText(LoginActivity.this, "구글 로그인", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                            intent.putExtra("login",0);
                             startActivity(intent);
                         }
                     }
@@ -141,6 +142,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                             // 로그인 성공
                             Toast.makeText(LoginActivity.this, "페이스북 로그인", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                            intent.putExtra("login",1);
                             startActivity(intent);
 
                         } else {

@@ -1,7 +1,9 @@
 package com.example.mjcstagram;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -14,6 +16,11 @@ import com.example.mjcstagram.home.HomeFragment;
 import com.example.mjcstagram.my.MyFragment;
 import com.example.mjcstagram.news.NewsFragment;
 import com.example.mjcstagram.search.SearchFragment;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.firebase.auth.FirebaseAuth;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,11 +28,15 @@ public class MainActivity extends AppCompatActivity {
     FragmentTransaction fragmentTransaction;
     Main binding;
     int check;
+    int loginWay;
+    private GoogleApiClient mGoogleApiClient;
      @Override
     protected void onCreate(Bundle savedInstanceState) {
          super.onCreate(savedInstanceState);
          binding= DataBindingUtil.setContentView(this,R.layout.activity_main);
          binding.setActivity(this);
+         Intent intent=getIntent();
+         loginWay=intent.getIntExtra("login",2);
          fragmentManager = getSupportFragmentManager();
          setStartFragment(new HomeFragment().newinstance());
 
@@ -44,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.newsIcon:
                 setIcons(R.drawable.ic_home_white, R.drawable.ic_search_white, R.drawable.heart2, R.drawable.ic_person_outline_black);
-                setStartFragment(new NewsFragment().newinstance());
+                setStartFragment(new NewsFragment());
                 check=2;
                 break;
             case R.id.myIcon:
@@ -70,7 +81,18 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
 
         if(check==0){
-            super.onBackPressed();
+            if(loginWay==0) {
+                FirebaseAuth.getInstance().signOut();
+                Toast.makeText(MainActivity.this, "구글 로그아웃", Toast.LENGTH_SHORT).show();
+                super.onBackPressed();
+            }else if(loginWay==1){
+                FacebookSdk.sdkInitialize(getApplicationContext());
+                LoginManager.getInstance().logOut();
+                Toast.makeText(MainActivity.this, "페이스북 로그아웃", Toast.LENGTH_SHORT).show();
+                super.onBackPressed();
+            }else{
+                Toast.makeText(MainActivity.this, "잘못된 로그인", Toast.LENGTH_SHORT).show();
+            }
         }else{
             setIcons(R.drawable.ic_home_black, R.drawable.ic_search_white, R.drawable.heart, R.drawable.ic_person_outline_black);
             fragmentTransaction = fragmentManager.beginTransaction();
