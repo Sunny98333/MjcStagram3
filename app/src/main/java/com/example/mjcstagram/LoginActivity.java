@@ -2,6 +2,7 @@ package com.example.mjcstagram;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -27,10 +28,13 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
     SignInButton Google_Login;
+
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
     private static final int RC_SIGN_IN = 100;
     private FirebaseAuth mAuth;
@@ -50,7 +54,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
          // 파이어베이스 인증 객체 선언
          firebaseAuth = FirebaseAuth.getInstance();
-
+         Mjcapplication.mAuth = FirebaseAuth.getInstance();
          // 페이스북 콜백 등록
          mCallbackManager = CallbackManager.Factory.create();
 
@@ -93,7 +97,37 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
              }
          });// ...
 
+         mAuthListener = new FirebaseAuth.AuthStateListener() {
+             @Override
+             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                 FirebaseUser user = firebaseAuth.getCurrentUser();
+                 if (user != null) { // User is signed in
+                      Log.d("", "onAuthStateChanged:signed_in:" + user.getUid());
+                     Toast.makeText(LoginActivity.this, "로그인", Toast.LENGTH_SHORT).show();
+                     Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                     startActivity(intent);
+
+                 }
+                 else { // User is signed out
+                      Log.d("","onAuthStateChanged:signed_out");
+                 }
+             }};
+
     }
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    public void onStop(){
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -123,6 +157,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                             intent.putExtra("login",0);
                             startActivity(intent);
+                            finish();
                         }
                     }
                 });
@@ -144,6 +179,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                             intent.putExtra("login",1);
                             startActivity(intent);
+                            finish();
 
                         } else {
                             // 로그인 실패

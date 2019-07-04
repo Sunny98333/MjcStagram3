@@ -16,10 +16,10 @@ import com.example.mjcstagram.home.HomeFragment;
 import com.example.mjcstagram.my.MyFragment;
 import com.example.mjcstagram.news.NewsFragment;
 import com.example.mjcstagram.search.SearchFragment;
-import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.searchIcon:
                 setIcons(R.drawable.ic_home_white, R.drawable.ic_search_black, R.drawable.heart, R.drawable.ic_person_outline_black);
-                setStartFragment(new SearchFragment().newinstance());
+                setStartFragment(new SearchFragment());
                 check=1;
                 break;
             case R.id.newsIcon:
@@ -77,22 +77,23 @@ public class MainActivity extends AppCompatActivity {
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container, fragment).commit();
     }
+    private void signOut() {
+        FirebaseUser user = Mjcapplication.getUserInfo();
+        UserInfo userInfo = user.getProviderData().get(1);
+        if (userInfo.getProviderId().contains("facebook")) {
+            LoginManager.getInstance().logOut();
+        }
+        Toast.makeText(MainActivity.this, "로그아웃", Toast.LENGTH_SHORT).show();
+        Mjcapplication.mAuth.signOut();
+        Mjcapplication.mAuth = null;
+        startActivity(new Intent(this, LoginActivity.class));
+        finish();
+    }
     @Override
     public void onBackPressed() {
 
         if(check==0){
-            if(loginWay==0) {
-                FirebaseAuth.getInstance().signOut();
-                Toast.makeText(MainActivity.this, "구글 로그아웃", Toast.LENGTH_SHORT).show();
-                super.onBackPressed();
-            }else if(loginWay==1){
-                FacebookSdk.sdkInitialize(getApplicationContext());
-                LoginManager.getInstance().logOut();
-                Toast.makeText(MainActivity.this, "페이스북 로그아웃", Toast.LENGTH_SHORT).show();
-                super.onBackPressed();
-            }else{
-                Toast.makeText(MainActivity.this, "잘못된 로그인", Toast.LENGTH_SHORT).show();
-            }
+            signOut();
         }else{
             setIcons(R.drawable.ic_home_black, R.drawable.ic_search_white, R.drawable.heart, R.drawable.ic_person_outline_black);
             fragmentTransaction = fragmentManager.beginTransaction();
