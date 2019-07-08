@@ -18,7 +18,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.mjcstagram.Mjcapplication;
 import com.example.mjcstagram.R;
-import com.example.mjcstagram.my.viewpager.MyTabPagerAdapter;
+import com.example.mjcstagram.news.viewpager.TabPagerAdapter;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.tabs.TabLayout;
@@ -27,12 +27,12 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.Arrays;
 import java.util.List;
 
-public class MyFragment extends Fragment {
+public class MyFragment_backup extends Fragment {
     private RecyclerAdapter adapter;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    public static MyFragment newinstance(){
-        return new MyFragment();
+    public static MyFragment_backup newinstance(){
+        return new MyFragment_backup();
     }
 
     @Override
@@ -81,7 +81,7 @@ public class MyFragment extends Fragment {
 
         //뷰페이퍼 선언부분
         tabLayout = fv.findViewById(R.id.tabLayout);
-        viewPager.setAdapter(new MyTabPagerAdapter(getChildFragmentManager()));
+        viewPager.setAdapter(new TabPagerAdapter(getChildFragmentManager()));
         viewPager.setOffscreenPageLimit(2);
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_view_quilt_black),0,true);
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_account_box_gray),1);
@@ -92,10 +92,6 @@ public class MyFragment extends Fragment {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
-                if(tab.getPosition()==0){
-                    setIcon();
-                }
-
             }
 
             @Override
@@ -139,9 +135,4 @@ public class MyFragment extends Fragment {
         }
         adapter.notifyDataSetChanged();
     }
-
-    private void setIcon(int... icons){
-
-    }
 }
-

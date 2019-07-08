@@ -6,7 +6,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
-
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -156,29 +155,45 @@
 
                                     />
 
-                                <com.google.android.material.tabs.TabLayout
-                                    android:id="@+id/tabLayout"
-                                    android:layout_width="match_parent"
+                                <ImageView
+                                    android:id="@+id/myPost"
+                                    android:layout_width="0dp"
                                     android:layout_height="48dp"
+                                    android:src="@drawable/ic_view_quilt_black"
                                     app:layout_constraintTop_toBottomOf="@id/arterBtn"
-                                    android:layout_marginTop="10dp"
-                                    >
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintRight_toLeftOf="@+id/myPhoto"
+                                    app:layout_constraintHorizontal_chainStyle="spread"
+                                    app:layout_constraintHorizontal_weight="5"
 
-                                </com.google.android.material.tabs.TabLayout>
+                                    android:layout_marginTop="10dp"
+                                    android:background="@drawable/solidboldblack"
+                                    tools:ignore="MissingConstraints" />
+                                <ImageView
+                                    android:id="@+id/myPhoto"
+                                    android:layout_width="0dp"
+                                    android:layout_height="48dp"
+                                    android:src="@drawable/ic_account_box_gray"
+                                    app:layout_constraintTop_toBottomOf="@id/arterBtn"
+                                    app:layout_constraintLeft_toRightOf="@+id/myPost"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintHorizontal_weight="5"
+                                    android:layout_marginTop="10dp"
+                                    android:background="@drawable/solidbold"
+                                    tools:ignore="MissingConstraints" />
                             </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.appbar.CollapsingToolbarLayout>
                 </com.google.android.material.appbar.AppBarLayout>
 
-                <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/pager"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/racyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_behavior="@string/appbar_scrolling_view_behavior"
                     >
 
-
-                </androidx.viewpager.widget.ViewPager>
+                </androidx.recyclerview.widget.RecyclerView>
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
