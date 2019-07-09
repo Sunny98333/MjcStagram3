@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.mjcstagram.add.addActivity;
 import com.example.mjcstagram.databinding.Main;
 import com.example.mjcstagram.home.HomeFragment;
 import com.example.mjcstagram.my.MyFragment;
@@ -33,33 +34,41 @@ public class MainActivity extends AppCompatActivity {
      @Override
     protected void onCreate(Bundle savedInstanceState) {
          super.onCreate(savedInstanceState);
-         binding= DataBindingUtil.setContentView(this,R.layout.activity_main);
+         binding= DataBindingUtil.setContentView(this, R.layout.activity_main);
          binding.setActivity(this);
          Intent intent=getIntent();
          loginWay=intent.getIntExtra("login",2);
          fragmentManager = getSupportFragmentManager();
          setStartFragment(new HomeFragment().newinstance());
 
+         binding.addIcon.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 Intent addintent = new Intent(getApplicationContext(), addActivity.class);
+                 startActivity(addintent);
+             }
+         });
+
      }
     public void setFragment(View view) {
         switch (view.getId()) {
             case R.id.homeIcon:
-                setIcons(R.drawable.ic_home_black, R.drawable.ic_search_white, R.drawable.heart, R.drawable.ic_person_outline_black);
+                setIcons(R.drawable.ic_home_black, R.drawable.ic_search_white, R.drawable.ic_favorite_border_black_24dp, R.drawable.ic_person_outline_black);
                 setStartFragment(new HomeFragment().newinstance());
                 check=0;
                 break;
             case R.id.searchIcon:
-                setIcons(R.drawable.ic_home_white, R.drawable.ic_search_black, R.drawable.heart, R.drawable.ic_person_outline_black);
-                setStartFragment(new SearchFragment());
+                setIcons(R.drawable.ic_home_white, R.drawable.ic_search_black, R.drawable.ic_favorite_border_black_24dp, R.drawable.ic_person_outline_black);
+                setStartFragment(new SearchFragment().newInstance());
                 check=1;
                 break;
             case R.id.newsIcon:
-                setIcons(R.drawable.ic_home_white, R.drawable.ic_search_white, R.drawable.heart2, R.drawable.ic_person_outline_black);
+                setIcons(R.drawable.ic_home_white, R.drawable.ic_search_white, R.drawable.ic_favorite_black, R.drawable.ic_person_outline_black);
                 setStartFragment(new NewsFragment());
                 check=2;
                 break;
             case R.id.myIcon:
-                setIcons(R.drawable.ic_home_white, R.drawable.ic_search_white, R.drawable.heart, R.drawable.ic_person_black);
+                setIcons(R.drawable.ic_home_white, R.drawable.ic_search_white, R.drawable.ic_favorite_border_black_24dp, R.drawable.ic_person_black);
                 setStartFragment(new MyFragment().newinstance());
                 check=3;
                 break;

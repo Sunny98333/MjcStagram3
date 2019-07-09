@@ -26,7 +26,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="이메일"
-                    android:textSize="22sp"
+                    android:textSize="18sp"
                     android:textColor="#000000"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -76,96 +76,95 @@
                         android:fitsSystemWindows="true"
                         android:minHeight="48dp"
                         >
-                            <androidx.constraintlayout.widget.ConstraintLayout
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            tools:layout_editor_absoluteX="16dp">
+
+                            <ImageView
+                                android:id="@+id/profil"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:layout_marginLeft="17dp"
+                                android:src="@drawable/ic_sentiment_satisfied_black_24dp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:ignore="MissingConstraints" />
+
+                            <TextView
+                                android:id="@+id/post"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="0\n게시물"
+                                android:textColor="#000000"
+                                android:textSize="14sp"
+
+                                app:layout_constraintBottom_toBottomOf="@id/profil"
+                                app:layout_constraintLeft_toRightOf="@id/profil"
+                                app:layout_constraintRight_toLeftOf="@id/follower"
+                                app:layout_constraintTop_toTopOf="@id/profil" />
+
+                            <TextView
+                                android:id="@+id/follower"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+
+                                android:text="0\n팔로워"
+                                android:textColor="#000000"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toBottomOf="@id/profil"
+                                app:layout_constraintLeft_toRightOf="@id/post"
+                                app:layout_constraintRight_toLeftOf="@id/following"
+                                app:layout_constraintTop_toTopOf="@id/profil" />
+
+                            <TextView
+                                android:id="@+id/following"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="0\n팔로잉"
+                                android:textColor="#000000"
+
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toBottomOf="@id/profil"
+                                app:layout_constraintLeft_toRightOf="@id/follower"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/profil" />
+
+                            <TextView
+                                android:id="@+id/userName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="이름"
+                                android:textSize="14sp"
+                                app:layout_constraintEnd_toEndOf="@+id/profil"
+                                app:layout_constraintStart_toStartOf="@+id/profil"
+                                app:layout_constraintTop_toBottomOf="@id/profil" />
+
+                            <Button
+                                android:id="@+id/arterBtn"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                tools:layout_editor_absoluteX="16dp">
+                                android:layout_height="32dp"
+                                android:layout_margin="12dp"
+                                android:background="@drawable/rounded"
+                                android:text="프로필 수정"
+                                app:layout_constraintTop_toBottomOf="@id/userName"
+                                tools:layout_editor_absoluteX="20dp"
+                                />
 
-                                <ImageView
-                                    android:id="@+id/profil"
-                                    android:layout_width="100dp"
-                                    android:layout_height="100dp"
-                                    android:layout_marginLeft="20dp"
-                                    android:src="@drawable/ic_sentiment_satisfied_black_24dp"
-                                    app:layout_constraintLeft_toLeftOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent"
-                                    tools:ignore="MissingConstraints" />
+                            <com.google.android.material.tabs.TabLayout
+                                android:id="@+id/tabLayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="48dp"
+                                android:layout_marginTop="10dp"
+                                app:layout_constraintTop_toBottomOf="@id/arterBtn">
 
-                                <TextView
-                                    android:id="@+id/post"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center"
-                                    android:text="0\n게시물"
-                                    android:textColor="#000000"
-                                    android:textSize="14sp"
-
-                                    app:layout_constraintBottom_toBottomOf="@id/profil"
-                                    app:layout_constraintLeft_toRightOf="@id/profil"
-                                    app:layout_constraintRight_toLeftOf="@id/follower"
-                                    app:layout_constraintTop_toTopOf="@id/profil" />
-
-                                <TextView
-                                    android:id="@+id/follower"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center"
-
-                                    android:text="0\n팔로워"
-                                    android:textColor="#000000"
-                                    android:textSize="14sp"
-                                    app:layout_constraintBottom_toBottomOf="@id/profil"
-                                    app:layout_constraintLeft_toRightOf="@id/post"
-                                    app:layout_constraintRight_toLeftOf="@id/following"
-                                    app:layout_constraintTop_toTopOf="@id/profil" />
-
-                                <TextView
-                                    android:id="@+id/following"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center"
-                                    android:text="0\n팔로잉"
-                                    android:textColor="#000000"
-
-                                    android:textSize="14sp"
-                                    app:layout_constraintBottom_toBottomOf="@id/profil"
-                                    app:layout_constraintLeft_toRightOf="@id/follower"
-                                    app:layout_constraintRight_toRightOf="parent"
-                                    app:layout_constraintTop_toTopOf="@id/profil" />
-
-                                <TextView
-                                    android:id="@+id/userName"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="5dp"
-                                    android:text="이름"
-                                    android:textSize="14sp"
-                                    app:layout_constraintLeft_toLeftOf="@id/profil"
-                                    app:layout_constraintTop_toBottomOf="@id/profil" />
-
-                                <Button
-                                    android:id="@+id/arterBtn"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="20dp"
-                                    android:text="프로필 수정"
-                                    android:background="@drawable/rounded"
-                                    android:layout_marginLeft="20dp"
-                                    android:layout_marginRight="20dp"
-                                    android:layout_marginTop="10dp"
-                                    app:layout_constraintTop_toBottomOf="@id/userName"
-
-                                    />
-
-                                <com.google.android.material.tabs.TabLayout
-                                    android:id="@+id/tabLayout"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="48dp"
-                                    app:layout_constraintTop_toBottomOf="@id/arterBtn"
-                                    android:layout_marginTop="10dp"
-                                    >
-
-                                </com.google.android.material.tabs.TabLayout>
-                            </androidx.constraintlayout.widget.ConstraintLayout>
+                            </com.google.android.material.tabs.TabLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.appbar.CollapsingToolbarLayout>
                 </com.google.android.material.appbar.AppBarLayout>

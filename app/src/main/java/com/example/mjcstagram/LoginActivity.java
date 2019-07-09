@@ -104,7 +104,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                  if (user != null) { // User is signed in
                       Log.d("", "onAuthStateChanged:signed_in:" + user.getUid());
                      Toast.makeText(LoginActivity.this, "로그인", Toast.LENGTH_SHORT).show();
-                     Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                      startActivity(intent);
 
                  }
@@ -154,7 +154,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                             Toast.makeText(LoginActivity.this, "인증 실패", Toast.LENGTH_SHORT).show();
                         }else{
                             Toast.makeText(LoginActivity.this, "구글 로그인", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             intent.putExtra("login",0);
                             startActivity(intent);
                             finish();
@@ -176,7 +176,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                         if (task.isSuccessful()) {
                             // 로그인 성공
                             Toast.makeText(LoginActivity.this, "페이스북 로그인", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             intent.putExtra("login",1);
                             startActivity(intent);
                             finish();
