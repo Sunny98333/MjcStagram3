@@ -52,22 +52,19 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
     // 여기서 subView를 setting 해줍니다.
     class ItemViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView textView1;
-        private TextView textView2;
-        private ImageView imageView;
+        private ImageView itemimageView;
 
         ItemViewHolder(View itemView) {
             super(itemView);
 
-            textView1 = itemView.findViewById(R.id.textView1);
-            textView2 = itemView.findViewById(R.id.textView2);
-            imageView = itemView.findViewById(R.id.imageView);
+            itemimageView = itemView.findViewById(R.id.itemimageView);
         }
 
         void onBind(Data data) {
-            textView1.setText(data.getTitle());
-            textView2.setText(data.getContent());
-            imageView.setImageResource(data.getResId());
+
+            itemimageView.getLayoutParams().width=data.getSize();
+            itemimageView.getLayoutParams().height=data.getSize();
+            itemimageView.setImageResource(data.getResId());
         }
     }
 }

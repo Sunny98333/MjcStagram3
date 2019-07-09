@@ -31,6 +31,8 @@ public class MyFragment extends Fragment {
     private RecyclerAdapter adapter;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    Data data;
+
     public static MyFragment newinstance(){
         return new MyFragment();
     }
@@ -44,17 +46,16 @@ public class MyFragment extends Fragment {
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) fv.findViewById(R.id.collpaseBar);
         collapsingToolbarLayout.setTitle("테스트타이틀");
 
+        TextView postText;
         AppCompatTextView userEmail;
         TextView userName;
         ImageView profil;
         androidx.appcompat.widget.Toolbar toolbar;
 
+        postText = fv.findViewById(R.id.post);
         toolbar = fv.findViewById(R.id.toolbar);
         AppBarLayout appBarLayout = (AppBarLayout) fv.findViewById(R.id.appBarLayout);
         viewPager = fv.findViewById(R.id.pager);
-
-
-
 
         //유저 정보 부분
         FirebaseUser user = Mjcapplication.getUserInfo();
@@ -86,6 +87,7 @@ public class MyFragment extends Fragment {
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_view_quilt_black),0,true);
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_account_box_gray),1);
 
+
         // Set TabSelectedListener
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 
@@ -93,7 +95,11 @@ public class MyFragment extends Fragment {
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
                 if(tab.getPosition()==0){
-                    setIcon();
+                    tabLayout.getTabAt(0).setIcon(R.drawable.ic_view_quilt_black);
+                    tabLayout.getTabAt(1).setIcon(R.drawable.ic_account_box_gray);
+                }else if(tab.getPosition()==1){
+                    tabLayout.getTabAt(0).setIcon(R.drawable.ic_view_quilt_gray);
+                    tabLayout.getTabAt(1).setIcon(R.drawable.ic_account_box_black);
                 }
 
             }
@@ -114,31 +120,7 @@ public class MyFragment extends Fragment {
 
         return fv.getRootView();
     }
-    private void getData() {
-        // 임의의 데이터입니다.
-        List<String> listTitle = Arrays.asList("국화", "사막", "수국");
-        List<String> listContent = Arrays.asList(
-                "이 꽃은 국화입니다.",
-                "여기는 사막입니다.",
-                "이 꽃은 수국입니다."
-        );
-        List<Integer> listResId = Arrays.asList(
-                R.drawable.ic_add_box_black,
-                R.drawable.ic_account_box_black,
-                R.drawable.ic_person_black
-        );
-        for (int i = 0; i < listTitle.size(); i++) {
-            // 각 List의 값들을 data 객체에 set 해줍니다.
-            Data data = new Data();
-            data.setTitle(listTitle.get(i));
-            data.setContent(listContent.get(i));
-            data.setResId(listResId.get(i));
 
-            // 각 값이 들어간 data를 adapter에 추가합니다.
-            adapter.addItem(data);
-        }
-        adapter.notifyDataSetChanged();
-    }
 
     private void setIcon(int... icons){
 

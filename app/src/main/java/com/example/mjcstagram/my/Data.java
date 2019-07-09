@@ -5,6 +5,7 @@ public class Data {
     private String title;
     private String content;
     private int resId;
+    private int imagesize;
 
     public String getTitle() {
         return title;
@@ -29,4 +30,13 @@ public class Data {
     public void setResId(int resId) {
         this.resId = resId;
     }
+
+    public int getSize() {
+        return imagesize;
+    }
+
+    public void setSize(int imagesize) {
+        this.imagesize = imagesize;
+    }
+
 }
