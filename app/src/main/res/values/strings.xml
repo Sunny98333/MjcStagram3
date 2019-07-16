@@ -6,4 +6,13 @@
     <string name="loading">loading\.\.\.</string>
     <string name="facebook_app_id">341996433159456</string>
     <string name="facebook_fb_login_protocol_scheme">fb341996433159456</string>
+    <string name="record">Record</string>
+
+    <string name="stop">Stop</string>
+
+    <string name="description_info">Info</string>
+
+    <string name="permission_request">This sample needs permission for camera and audio recording.</string>
+
+    <string name="camera_error">This device doesn\'t support Camera2 API.</string>
 </resources>

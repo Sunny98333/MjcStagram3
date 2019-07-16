@@ -50,11 +50,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
 
     // RecyclerView의 핵심인 ViewHolder 입니다.
     // 여기서 subView를 setting 해줍니다.
-    class ItemViewHolder extends RecyclerView.ViewHolder {
+    public static class ItemViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView itemimageView;
 
-        ItemViewHolder(View itemView) {
+        public ItemViewHolder(View itemView) {
             super(itemView);
 
             itemimageView = itemView.findViewById(R.id.itemimageView);

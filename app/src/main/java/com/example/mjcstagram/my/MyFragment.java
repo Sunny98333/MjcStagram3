@@ -76,7 +76,7 @@ public class MyFragment extends Fragment {
         //AppBarLayout, 아래부분 같이 터치하는 부분
         int dpHeight = getResources().getDisplayMetrics().heightPixels;
         int tbHeight = toolbar.getHeight();
-        int myInfoTopHeight = (int)(((dpHeight - tbHeight) / 10) * 2.62);
+        int myInfoTopHeight = (int)(((dpHeight - tbHeight) / 10) * 2.9);
         appBarLayout.getLayoutParams().height = myInfoTopHeight;
         viewPager.getLayoutParams().height = dpHeight - myInfoTopHeight;
 

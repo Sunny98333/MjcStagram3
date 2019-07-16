@@ -25,10 +25,7 @@ public class GalleryFragment extends Fragment {
     private final int GALLERY_CODE=1112;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         return inflater.inflate(R.layout.galllery_fragment, container, false);
-
-
     }
 
 

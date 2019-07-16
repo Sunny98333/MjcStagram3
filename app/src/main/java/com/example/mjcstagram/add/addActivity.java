@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.mjcstagram.R;
@@ -16,9 +17,13 @@ import com.google.android.material.tabs.TabLayout;
 public class addActivity extends AppCompatActivity {
 
 
+
+
     AddBinding addBinding;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         addBinding = DataBindingUtil.setContentView(this,R.layout.add);
 
         addBinding.pager.setAdapter(new AddTabPagerAdapter(getSupportFragmentManager()));
@@ -34,14 +39,15 @@ public class addActivity extends AppCompatActivity {
                 if(tab.getPosition()==0){
                     addBinding.list.setText("갤러리");
                     addBinding.next.setText("다음");
+
                 }else if(tab.getPosition()==1){
                     addBinding.list.setText("사진");
                     addBinding.next.setText("");
+
                 }else{
                     addBinding.list.setText("동영상");
                     addBinding.next.setText("다음");
                 }
-                addBinding.pager.setCurrentItem(tab.getPosition());
             }
 
             @Override
